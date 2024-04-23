@@ -25,7 +25,7 @@ struct TimeseriesRef
 
   void set(unsigned index, double x, double y);
 
-  double atTime(double t) const;
+  double atTime(double t, MatchType match_type) const;
 
   int getRawIndexAtTime(double t) const;
 
@@ -61,6 +61,11 @@ struct CreatedSeriesTime : public CreatedSeriesBase
 struct CreatedSeriesXY : public CreatedSeriesBase
 {
   CreatedSeriesXY(PlotDataMapRef* data_map, const std::string& name);
+};
+
+enum class MatchType {
+    Exact,    // Returns an index only if the exact time is found
+    Nearest   // Returns the nearest time index (current behavior)
 };
 
 //-----------------------
