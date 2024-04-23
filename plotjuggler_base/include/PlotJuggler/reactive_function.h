@@ -27,6 +27,8 @@ struct TimeseriesRef
 
   double atTime(double t) const;
 
+  int getRawIndexAtTime(double t) const;
+
   unsigned size() const;
 
   void clear() const;
