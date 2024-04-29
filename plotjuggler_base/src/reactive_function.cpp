@@ -195,23 +195,22 @@ double TimeseriesRef::atTime(double t, MatchType match_type) const
   return _plot_data->at(*index).y;
 }
 
-std::optional<unsigned> TimeseriesRef::getRawIndexAtTime(double t, MatchType match_type) const
+std::optional<unsigned> TimeseriesRef::getRawIndexAtTime(double t,
+                                                         MatchType match_type) const
 {
   if (match_type == MatchType::Exact)
   {
-    auto it = std::find_if(
-        _plot_data->begin(),
-        _plot_data->end(),
-        [t](const auto& point) { return point.x == t; });
+    auto it = std::find_if(_plot_data->begin(), _plot_data->end(),
+                           [t](const auto& point) { return point.x == t; });
     if (it != _plot_data->end())
     {
       return std::distance(_plot_data->begin(), it);
     }
-    return std::nullopt; // Exact time not found
+    return std::nullopt;  // Exact time not found
   }
   else
   {
-    return _plot_data->getIndexFromX(t); // Nearest match
+    return _plot_data->getIndexFromX(t);  // Nearest match
   }
 }
 

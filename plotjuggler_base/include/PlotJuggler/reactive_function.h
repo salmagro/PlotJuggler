@@ -17,9 +17,10 @@ class CreatedSeriesXY;
 
 namespace PJ
 {
-enum class MatchType {
-    Exact,    // Returns an index only if the exact time is found
-    Nearest   // Returns the nearest time index (current behavior)
+enum class MatchType
+{
+  Exact,   // Returns an index only if the exact time is found
+  Nearest  // Returns the nearest time index (current behavior)
 };
 
 struct TimeseriesRef
@@ -32,7 +33,8 @@ struct TimeseriesRef
 
   double atTime(double t, MatchType match_type) const;
 
-  std::optional<unsigned> getRawIndexAtTime(double t, MatchType match_type) const; // Method signature updated
+  std::optional<unsigned>
+  getRawIndexAtTime(double t, MatchType match_type) const;  // Method signature updated
 
   unsigned size() const;
 
